@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medio Ambiente</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#e8f5e9;
+  color:#222;
+  transition:0.4s;
+}
+
+body.dark{background:#121212;color:#eee}
+
+header{
+  background:linear-gradient(120deg,#2e7d32,#66bb6a);
+  color:white;
+  padding:60px 20px;
+  text-align:center;
+}
+
+header h1{font-size:2.5em;margin:0}
+header p{opacity:0.9}
+
+nav{
+  background:#2e7d32;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+  transform:translateY(40px);
+  opacity:0;
+  transition:0.6s;
+}
+
+body.dark .card{background:#1e1e1e}
+
+.card.show{opacity:1;transform:translateY(0)}
+
+.card h3{color:#2e7d32}
+
+.hero{
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero img{
+  width:100%;
+  max-width:700px;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+button{
+  background:#2e7d32;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover{background:#1b5e20}
+
+form input, form textarea{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.toggle{
+  position:fixed;
+  top:10px;
+  right:10px;
+  background:black;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+footer{
+  background:#2e7d32;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle" onclick="modoOscuro()">🌙</div>
+
+<header>
+<h1>🌍 Protejamos el Medio Ambiente</h1>
+<p>Pequeñas acciones crean grandes cambios</p>
+</header>
+
+<nav>
+<a href="#">Inicio</a>
+<a href="#problemas">Problemas</a>
+<a href="#soluciones">Soluciones</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero">
+<h2>¿Por qué es importante cuidar el planeta?</h2>
+<p>El medio ambiente nos da vida: aire, agua y alimentos. Sin él, no existiríamos.</p>
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+</section>
+
+<div class="container">
+
+<h2 id="problemas">🌱 Problemas Ambientales</h2>
+<div class="grid">
+<div class="card"><h3>Contaminación</h3><p>Afecta aire, agua y suelo dañando la salud.</p></div>
+<div class="card"><h3>Deforestación</h3><p>Se destruyen bosques esenciales para la vida.</p></div>
+<div class="card"><h3>Cambio climático</h3><p>Provoca desastres naturales y temperaturas extremas.</p></div>
+</div>
+
+<h2 id="soluciones">♻️ Soluciones</h2>
+<div class="grid">
+<div class="card"><h3>Reciclar</h3><p>Reduce la basura y cuida recursos.</p></div>
+<div class="card"><h3>Energía limpia</h3><p>Usar energías renovables ayuda al planeta.</p></div>
+<div class="card"><h3>Menos plástico</h3><p>Evita contaminar océanos y animales.</p></div>
+</div>
+
+<h2>🚀 Acciones diarias</h2>
+<div class="grid">
+<div class="card"><p>Apaga luces innecesarias</p></div>
+<div class="card"><p>Usa transporte ecológico</p></div>
+<div class="card"><p>Planta árboles 🌳</p></div>
+</div>
+
+<h2 id="contacto">📩 Contacto</h2>
+<div class="card">
+<form onsubmit="enviar(event)">
+<input type="text" placeholder="Nombre" required>
+<input type="email" placeholder="Correo" required>
+<textarea placeholder="Mensaje" required></textarea>
+<button>Enviar</button>
+</form>
+<p id="msg"></p>
+</div>
+
+</div>
+
+<footer>
+<p>🌿 Proyecto sobre Medio Ambiente - 2026</p>
+</footer>
+
+<script>
+function modoOscuro(){document.body.classList.toggle('dark')}
+
+function enviar(e){
+ e.preventDefault();
+ document.getElementById('msg').innerText='Mensaje enviado correctamente ✅';
+}
+
+function animar(){
+ document.querySelectorAll('.card').forEach(c=>{
+  if(c.getBoundingClientRect().top<window.innerHeight-50){
+   c.classList.add('show')
+  }
+ })
+}
+
+window.addEventListener('scroll',animar)
+window.addEventListener('load',animar)
+</script>
+
+</body>
+</html>
